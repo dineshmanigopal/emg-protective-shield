@@ -3,40 +3,6 @@
 //   Target  : ESP32-WROOM-32
 //   Sensor  : Advancer Technologies Muscle Sensor v3
 //
-//   WHAT CHANGED FROM v3 — SERVO FIXES:
-//   ─────────────────────────────────────────────────────────
-//   FIX 1 — attach() now specifies pulse width limits.
-//     v3 used myServo.attach(SERVO_PIN) with no pulse-width
-//     arguments. ESP32Servo defaults to 544µs–2400µs, but most
-//     hobby servos (SG90, MG996R, DS3225) expect 500µs–2500µs.
-//     The mismatch makes 0° and 180° endpoints unreachable —
-//     the servo either stops short or twitches/buzzes against
-//     its mechanical stop. Fixed by passing explicit min/max µs.
-//
-//   FIX 2 — writeMicroseconds() instead of write() for motion.
-//     write(degrees) internally maps degrees to µs using the
-//     same possibly-wrong default range. writeMicroseconds()
-//     bypasses that mapping entirely and sends the exact pulse
-//     the servo hardware expects. Much more reliable across
-//     different servo models.
-//
-//   FIX 3 — Startup centering + sweep test.
-//     v3 sent write(0) immediately on boot before the servo
-//     had time to power up. Some servos ignore or misread the
-//     first command. v4 waits 500ms after attach(), then runs
-//     a slow 0→20→0° verification sweep so you can confirm the
-//     servo is responding before calibration begins.
-//
-//   FIX 4 — servoCurrentPos clamped to [0, DEPLOY_ANGLE].
-//     If servoCurrentPos ever drifted out of range (e.g. from
-//     an interrupted sweep), the updateServo() comparisons
-//     could overshoot. Now clamped on every write.
-//
-//   FIX 5 — Deploy angle reverted to 90°.
-//     SERVO_DEPLOYED_ANGLE is 90. At SERVO_STEP=3, SERVO_TICK_MS=15:
-//       90° / 3° = 30 steps × 15ms = 450ms full deploy sweep.
-//     Raise SERVO_STEP to 5 for ~270ms deploy.
-//
 //   CRITICAL WIRING — READ BEFORE POWERING ON:
 //   ─────────────────────────────────────────────────────────
 //   Sensor requires ±9V DUAL supply (two 9V batteries):
@@ -134,7 +100,7 @@
 #define REARM_DELAY_MS       2000
 
 // Emergency contact — include country code
-#define EMERGENCY_NUMBER     "+918639345978"   // ← CHANGE THIS
+#define EMERGENCY_NUMBER     "+91XXXXXXXXXX"   // ← CHANGE THIS
 
 // true  = continuous ADC printout (use during hardware bring-up)
 // false = 5-second status reports (use during normal operation)
