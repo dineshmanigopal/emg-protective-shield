@@ -41,7 +41,7 @@ EMG Sensor → ESP32-WROOM-32 → Decision Logic →
 
 - **EMG sensor requires ±9V dual supply** (two 9V batteries).
 - **SIG output swings 0–9V** → must be scaled to 3.3V for ESP32 ADC.
-- Use a voltage divider: **47kΩ / 18kΩ** to GPIO **34** (9V → ~2.49V).
+- Use a voltage divider: **47kΩ from SIG → node**, **18kΩ from node → GND**, node to GPIO **34** (9V → ~2.49V).
 - With **11dB ADC attenuation**, ~2.49V stays within the ESP32 0–3.3V range.
 - **Do not power the SG90 from the ESP32 3.3V/5V pin**. Use a separate 5V source.
 - **Share ground** between ESP32 and the servo power supply.
