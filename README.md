@@ -132,7 +132,7 @@ EMG Sensor → ESP32-S3 → Decision Logic →
 ## 👨‍💻 Authors
 
 * Pathivada Suneel Kumar
-* **Dinesh Mani Gopal**
+* Dinesh Mani Gopal
 * Kandipilli Vinay Kumar
 * Pisini Bhanu Prasad
 
