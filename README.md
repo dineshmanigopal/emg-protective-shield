@@ -41,7 +41,7 @@ EMG Sensor → ESP32-WROOM-32 → Decision Logic →
 
 - **EMG sensor requires ±9V dual supply** (two 9V batteries).
 - **SIG output swings 0–9V** → must be scaled to 3.3V for ESP32 ADC.
-- Use a voltage divider: **47kΩ / 18kΩ** to GPIO **34**.
+- Use a voltage divider: **47kΩ / 18kΩ** to GPIO **34** (9V → ~2.49V).
 - **Do not power the SG90 from the ESP32 3.3V/5V pin**. Use a separate 5V source.
 - **Share ground** between ESP32 and the servo power supply.
 
@@ -86,7 +86,7 @@ Update these constants to match your hardware and preferences:
 
 ## Test Mode
 
-Set `TEST_MODE` to `true` in the `.ino`, flash the board, and open the Serial Monitor at 115200 to run the built-in tests. Set it back to `false` for normal operation.
+Set `TEST_MODE` to `true` in the `.ino`, flash the board, and open the Serial Monitor at 115200 to run the built-in tests. The suite checks logic like servo pulse mapping, sweep step behavior, EMG peak gating, state-machine transitions, GPS fallback, and deploy timing (it does not validate external GSM/GPS hardware). Set it back to `false` for normal operation.
 
 ## Limitations
 
