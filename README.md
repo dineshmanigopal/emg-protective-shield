@@ -45,7 +45,7 @@ EMG Sensor → ESP32-WROOM-32 → Decision Logic →
   - Connect **47kΩ** between **SIG** and the **divider node**.
   - Connect **18kΩ** between the **divider node** and **GND**.
   - Connect the **divider node** to GPIO **34** (9V → ~2.49V).
-- Calculation: `Vout = Vin × (18kΩ / (47kΩ + 18kΩ)) = Vin × (18kΩ / 65kΩ) = Vin × (18/65)` → `9V × (18/65) ≈ 2.49V`.
+- Calculation: `Vout = 9V × (18kΩ / 65kΩ) ≈ 2.49V`.
 - Use **11dB ADC attenuation** to cover the ESP32 0–3.3V range; ~2.49V stays safely within it.
 - **Do not power the SG90 from the ESP32 3.3V/5V pin**. Use a separate 5V source.
 - **Share ground** between ESP32 and the servo power supply.
@@ -91,7 +91,7 @@ Update these constants to match your hardware and preferences:
 
 ## Test Mode
 
-- Set `TEST_MODE` to `true`, flash the board, and open the Serial Monitor at 115200.
+To run tests, set `TEST_MODE` to `true`, flash the board, and open the Serial Monitor at 115200. Set `TEST_MODE` back to `false` for normal operation. Tests print PASS/FAIL per case plus a summary; any FAIL means the firmware logic or constants need attention before deployment.
 
 The suite checks internal firmware logic only (not external GSM/GPS hardware):
 - Servo pulse mapping
@@ -100,10 +100,6 @@ The suite checks internal firmware logic only (not external GSM/GPS hardware):
 - State-machine transitions
 - GPS fallback
 - Deploy timing
-
-- Set `TEST_MODE` back to `false` for normal operation.
-- Tests print PASS/FAIL per case plus a summary.
-- Any FAIL means the firmware logic or constants need attention before deployment.
 
 ## Limitations
 
