@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project presents an EMG-based wearable safety device designed to enhance personal safety through automatic emergency detection and response. Unlike traditional systems that rely on manual triggers, this system uses electromyography (EMG) signals to detect abnormal muscle activity. It automatically initiates emergency actions and is based on a final year B.Tech project report.
+This project presents an EMG-based wearable safety device that enhances personal safety through automatic emergency detection and response. Unlike traditional systems that rely on manual triggers, it uses electromyography (EMG) signals to detect abnormal muscle activity. The system automatically initiates emergency actions and is based on a final year B.Tech project report.
 
 ## Key Features
 
@@ -57,10 +57,10 @@ EMG Sensor → ESP32-S3 → Decision Logic →
 
 ## Limitations
 
-- Signal noise due to improper sensor placement
-- Threshold varies for different users
+- Signal noise from improper sensor placement
+- Variable thresholds across different users
 - GSM network dependency
-- Possible false triggers during intense physical activity
+- False triggers during intense physical activity
 
 ## Future Improvements
 
